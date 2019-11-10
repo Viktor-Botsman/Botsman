@@ -28,8 +28,11 @@ def send_echo(message):
         fc = owm.three_hours_forecast('London,uk')
         f = fc.get_forecast()
         lst = f.get_weathers()
-
+        
         answer = f
+        
+        for weather in f:
+            answer += (weather.get_reference_time('iso'),weather.get_status()) + "/n"
 
 
         bot.send_message(message.chat.id, answer)

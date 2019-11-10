@@ -23,6 +23,18 @@ def send_echo(message):
             answer += "Нормас погода"
 
         bot.send_message(message.chat.id, answer)
+        
+    elif "прогноз погод" in command:
+        fc = owm.three_hours_forecast('London,uk')
+        f = fc.get_forecast()
+        lst = f.get_weathers()
+        
+        for weather in f:
+            answer+="Или "+ str(weather.get_reference_time('iso'),weather.get_status())+"\n\n"
+        answer="Список "+str(interval)+ "\n"
+
+        bot.send_message(message.chat.id, answer)
+        
     elif message.text=='курс валют':
         bot.send_message(message.chat.id, 'А тебе то зачем? нищеброд))')
 

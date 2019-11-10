@@ -6,7 +6,8 @@ bot = telebot.TeleBot("929266762:AAGMsHo5fflXm4YmCFJVdTWVNGcGtEYGgdM")
 
 @bot.message_handler(content_types=['text'])
 def send_echo(message):
-    if message.text=='погода':
+    command = message.text
+    if "погода" in command:
         observation = owm.weather_at_place( 'Kyiv' )
         w=observation.get_weather()
         temp = w.get_temperature('celsius')["temp"]

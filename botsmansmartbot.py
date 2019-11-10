@@ -29,10 +29,10 @@ def send_echo(message):
         f = fc.get_forecast()
         lst = f.get_weathers()
         
-        answer = f
+        answer = "Пока не разобрался"
         
-        for weather in f:
-            answer += (weather.get_reference_time('iso'),weather.get_status()) + "/n"
+        #for weather in f:
+            #answer += (weather.get_reference_time('iso'),weather.get_status())
 
 
         bot.send_message(message.chat.id, answer)

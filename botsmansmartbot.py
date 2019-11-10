@@ -25,9 +25,9 @@ def send_echo(message):
         bot.send_message(message.chat.id, answer)
         
     elif "прогноз погод" in command:
-        fc = owm.three_hours_forecast('London,uk')
-        f = fc.get_forecast()
-        lst = f.get_weathers()
+        #fc = owm.three_hours_forecast('London,uk')
+        #f = fc.get_forecast()
+        #lst = f.get_weathers()
         
         answer = "Пока не разобрался"
         

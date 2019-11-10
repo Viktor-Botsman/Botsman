@@ -31,8 +31,10 @@ def send_echo(message):
         
         #for weather in f:
             #answer+="Или "+ str(weather.get_reference_time('iso'),weather.get_status())+"\n\n"
-        answer=f.get_weathers()
+        answer = f.get_weathers() + "\n"
         #answer="Список "+str(lst)+ "\n"
+        for weather in f:
+            answer += (weather.get_reference_time('iso'),weather.get_status())
 
         bot.send_message(message.chat.id, answer)
         

@@ -7,7 +7,7 @@ bot = telebot.TeleBot("929266762:AAGMsHo5fflXm4YmCFJVdTWVNGcGtEYGgdM")
 @bot.message_handler(content_types=['text'])
 def send_echo(message):
     command = message.text
-    if "погода" in command:
+    if command.find("погода"):
         observation = owm.weather_at_place( 'Kyiv' )
         w=observation.get_weather()
         temp = w.get_temperature('celsius')["temp"]
@@ -24,7 +24,7 @@ def send_echo(message):
 
         bot.send_message(message.chat.id, answer)
         
-    elif "прогноз погод" in command:
+    elif command.find("прогноз погод"):
         #fc = owm.three_hours_forecast('London,uk')
         #f = fc.get_forecast()
         #lst = f.get_weathers()

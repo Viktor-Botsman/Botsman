@@ -35,35 +35,35 @@ def send_echo(message):
         for weather in f: 
             d=weather.get_reference_time(timeformat='date')
             if day1 == 0 or day1 == d.day:
-                    day1 = d.day
-                    mnt1 = d.strftime("%B")
-                    t1min=min(t1min,weather.get_temperature('celsius')["temp_min"])
-                    t1max=max(t1max,weather.get_temperature('celsius')["temp_max"])
-                elif day2 == 0 or day2 == d.day:
-                    day2 = d.day
-                    mnt2 = d.strftime("%B")
-                    t2min=min(t2min,weather.get_temperature('celsius')["temp_min"])
-                    t2max=max(t2max,weather.get_temperature('celsius')["temp_max"])
-                elif day3 == 0 or day3 == d.day:
-                    day3 = d.day
-                    mnt3 = d.strftime("%B")
-                    t3min=min(t3min,weather.get_temperature('celsius')["temp_min"])
-                    t3max=max(t3max,weather.get_temperature('celsius')["temp_max"])
-                elif day4 == 0 or day4 == d.day:
-                    day4 = d.day
-                    mnt4 = d.strftime("%B")
-                    t4min=min(t4min,weather.get_temperature('celsius')["temp_min"])
-                    t4max=max(t4max,weather.get_temperature('celsius')["temp_max"])
-                elif day5 == 0 or day5 == d.day:
-                    day5 = d.day
-                    mnt5 = d.strftime("%B")
-                    t5min=min(t5min,weather.get_temperature('celsius')["temp_min"])
-                    t5max=max(t5max,weather.get_temperature('celsius')["temp_max"])
-                elif day6 == 0 or day6 == d.day:
-                    day6 = d.day
-                    mnt6 = d.strftime("%B")
-                    t6min=min(t6min,weather.get_temperature('celsius')["temp_min"])
-                    t6max=max(t6max,weather.get_temperature('celsius')["temp_max"])
+                day1 = d.day
+                mnt1 = d.strftime("%B")
+                t1min=min(t1min,weather.get_temperature('celsius')["temp_min"])
+                t1max=max(t1max,weather.get_temperature('celsius')["temp_max"])
+            elif day2 == 0 or day2 == d.day:
+                day2 = d.day
+                mnt2 = d.strftime("%B")
+                t2min=min(t2min,weather.get_temperature('celsius')["temp_min"])
+                t2max=max(t2max,weather.get_temperature('celsius')["temp_max"])
+            elif day3 == 0 or day3 == d.day:
+                day3 = d.day
+                mnt3 = d.strftime("%B")
+                t3min=min(t3min,weather.get_temperature('celsius')["temp_min"])
+                t3max=max(t3max,weather.get_temperature('celsius')["temp_max"])
+            elif day4 == 0 or day4 == d.day:
+                day4 = d.day
+                mnt4 = d.strftime("%B")
+                t4min=min(t4min,weather.get_temperature('celsius')["temp_min"])
+                t4max=max(t4max,weather.get_temperature('celsius')["temp_max"])
+            elif day5 == 0 or day5 == d.day:
+                day5 = d.day
+                mnt5 = d.strftime("%B")
+                t5min=min(t5min,weather.get_temperature('celsius')["temp_min"])
+                t5max=max(t5max,weather.get_temperature('celsius')["temp_max"])
+            elif day6 == 0 or day6 == d.day:
+                day6 = d.day
+                mnt6 = d.strftime("%B")
+                t6min=min(t6min,weather.get_temperature('celsius')["temp_min"])
+                t6max=max(t6max,weather.get_temperature('celsius')["temp_max"])
  
             answer += (day1,mnt1,":",str(t1min)+"°C -",str(t1max)+"°C;")
             answer += (day2,mnt2,":",str(t2min)+"°C -",str(t2max)+"°C;")

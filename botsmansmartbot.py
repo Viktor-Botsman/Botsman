@@ -27,7 +27,7 @@ def send_echo(message):
     elif "Прогноз погод" in command or "прогноз погод" in command:
         fc = owm.three_hours_forecast( 'Kyiv' )
         f = fc.get_forecast()
-        lst = f.get_weathers()
+        #lst = f.get_weathers()
         
         answer = f
         
@@ -37,6 +37,7 @@ def send_echo(message):
 
         bot.send_message(message.chat.id, answer)
         
+        lst = owm.daily_forecast( 'Kyiv' )
         answer = lst
         
         bot.send_message(message.chat.id, answer)

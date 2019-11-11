@@ -25,11 +25,11 @@ def send_echo(message):
         bot.send_message(message.chat.id, answer)
         
     elif "Прогноз погод" in command or "прогноз погод" in command:
-        #fc = owm.three_hours_forecast('London,uk')
-        #f = fc.get_forecast()
-        #lst = f.get_weathers()
+        fc = owm.three_hours_forecast( 'Kyiv' )
+        f = fc.get_forecast()
+        lst = f.get_weathers()
         
-        answer = "Пока не разобрался"
+        answer = f + lst
         
         #for weather in f:
             #answer += (weather.get_reference_time('iso'),weather.get_status())

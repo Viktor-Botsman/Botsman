@@ -29,12 +29,16 @@ def send_echo(message):
         f = fc.get_forecast()
         lst = f.get_weathers()
         
-        answer = f + lst
+        answer = f
         
         #for weather in f:
             #answer += (weather.get_reference_time('iso'),weather.get_status())
 
 
+        bot.send_message(message.chat.id, answer)
+        
+        answer = lst
+        
         bot.send_message(message.chat.id, answer)
         
     elif message.text=='курс валют':

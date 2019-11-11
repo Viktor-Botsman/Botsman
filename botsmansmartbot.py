@@ -27,13 +27,51 @@ def send_echo(message):
     elif "Прогноз погод" in command or "прогноз погод" in command:
         fc = owm.three_hours_forecast( 'Kyiv' )
         f = fc.get_forecast()
-        #lst = f.get_weathers()
-        
-        answer = f
-        
-        #for weather in f:
-            #answer += (weather.get_reference_time('iso'),weather.get_status())
 
+        t1min=t2min=t3min=t4min=t5min=t6min=+100
+        t1max=t2max=t3max=t4max=t5max=t6max=-100
+        day1=day2=day3=day4=day5=day6=0
+
+        for weather in f: 
+            d=weather.get_reference_time(timeformat='date')
+            if day1 == 0 or day1 == d.day:
+                    day1 = d.day
+                    mnt1 = d.strftime("%B")
+                    t1min=min(t1min,weather.get_temperature('celsius')["temp_min"])
+                    t1max=max(t1max,weather.get_temperature('celsius')["temp_max"])
+                elif day2 == 0 or day2 == d.day:
+                    day2 = d.day
+                    mnt2 = d.strftime("%B")
+                    t2min=min(t2min,weather.get_temperature('celsius')["temp_min"])
+                    t2max=max(t2max,weather.get_temperature('celsius')["temp_max"])
+                elif day3 == 0 or day3 == d.day:
+                    day3 = d.day
+                    mnt3 = d.strftime("%B")
+                    t3min=min(t3min,weather.get_temperature('celsius')["temp_min"])
+                    t3max=max(t3max,weather.get_temperature('celsius')["temp_max"])
+                elif day4 == 0 or day4 == d.day:
+                    day4 = d.day
+                    mnt4 = d.strftime("%B")
+                    t4min=min(t4min,weather.get_temperature('celsius')["temp_min"])
+                    t4max=max(t4max,weather.get_temperature('celsius')["temp_max"])
+                elif day5 == 0 or day5 == d.day:
+                    day5 = d.day
+                    mnt5 = d.strftime("%B")
+                    t5min=min(t5min,weather.get_temperature('celsius')["temp_min"])
+                    t5max=max(t5max,weather.get_temperature('celsius')["temp_max"])
+                elif day6 == 0 or day6 == d.day:
+                    day6 = d.day
+                    mnt6 = d.strftime("%B")
+                    t6min=min(t6min,weather.get_temperature('celsius')["temp_min"])
+                    t6max=max(t6max,weather.get_temperature('celsius')["temp_max"])
+ 
+            answer += (day1,mnt1,":",str(t1min)+"°C -",str(t1max)+"°C;")
+            answer += (day2,mnt2,":",str(t2min)+"°C -",str(t2max)+"°C;")
+            answer += (day3,mnt3,":",str(t3min)+"°C -",str(t3max)+"°C;")
+            answer += (day4,mnt4,":",str(t4min)+"°C -",str(t4max)+"°C;")
+            answer += (day5,mnt5,":",str(t5min)+"°C -",str(t5max)+"°C;")
+            answer += (day6,mnt6,":",str(t6min)+"°C -",str(t6max)+"°C;")
+        #answer = f
 
         bot.send_message(message.chat.id, answer)
         

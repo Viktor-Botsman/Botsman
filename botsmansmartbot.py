@@ -31,7 +31,8 @@ def send_echo(message):
         t1min=t2min=t3min=t4min=t5min=t6min=+100
         t1max=t2max=t3max=t4max=t5max=t6max=-100
         day1=day2=day3=day4=day5=day6=0
-
+        mnt1=mnt2=mnt3=mnt41=mnt5=mnt6=0
+        
         for weather in f: 
             d=weather.get_reference_time(timeformat='date')
             if day1 == 0 or day1 == d.day:

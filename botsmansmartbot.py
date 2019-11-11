@@ -66,12 +66,12 @@ def send_echo(message):
                 t6min=min(t6min,weather.get_temperature('celsius')["temp_min"])
                 t6max=max(t6max,weather.get_temperature('celsius')["temp_max"])
  
-        answer += (str(day1) + " , " + str(mnt1) + " : " + str(t1min) + " °C - " + str(t1max) + " °C;")
-        answer += (str(day2) + " , " + str(mnt2) + " : " + str(t2min) + " °C - " + str(t2max) + " °C;")
-        answer += (str(day3) + " , " + str(mnt3) + " : " + str(t3min) + " °C - " + str(t3max) + " °C;")
-        answer += (str(day4) + " , " + str(mnt4) + " : " + str(t4min) + " °C - " + str(t4max) + " °C;")
-        answer += (str(day5) + " , " + str(mnt5) + " : " + str(t5min) + " °C - " + str(t5max) + " °C;")
-        answer += (str(day6) + " , " + str(mnt6) + " : " + str(t6min) + " °C - " + str(t6max) + " °C;")
+        answer += (str(day1) + " , " + str(mnt1) + " : " + str(t1min) + " °C - " + str(t1max) + " °C;" + "\n")
+        answer += (str(day2) + " , " + str(mnt2) + " : " + str(t2min) + " °C - " + str(t2max) + " °C;" + "\n")
+        answer += (str(day3) + " , " + str(mnt3) + " : " + str(t3min) + " °C - " + str(t3max) + " °C;" + "\n")
+        answer += (str(day4) + " , " + str(mnt4) + " : " + str(t4min) + " °C - " + str(t4max) + " °C;" + "\n")
+        answer += (str(day5) + " , " + str(mnt5) + " : " + str(t5min) + " °C - " + str(t5max) + " °C;" + "\n")
+        answer += (str(day6) + " , " + str(mnt6) + " : " + str(t6min) + " °C - " + str(t6max) + " °C;" + "\n")
         #answer = f
 
         bot.send_message(message.chat.id, answer)

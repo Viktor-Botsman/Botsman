@@ -71,7 +71,8 @@ def send_echo(message):
         answer += (str(day3) + " , " + str(mnt3) + " : " + str(t3min) + " °C - " + str(t3max) + " °C;" + "\n")
         answer += (str(day4) + " , " + str(mnt4) + " : " + str(t4min) + " °C - " + str(t4max) + " °C;" + "\n")
         answer += (str(day5) + " , " + str(mnt5) + " : " + str(t5min) + " °C - " + str(t5max) + " °C;" + "\n")
-        answer += (str(day6) + " , " + str(mnt6) + " : " + str(t6min) + " °C - " + str(t6max) + " °C;" + "\n")
+        if day6!=0:
+            answer += (str(day6) + " , " + str(mnt6) + " : " + str(t6min) + " °C - " + str(t6max) + " °C;" + "\n")
         #answer = f
 
         bot.send_message(message.chat.id, answer)

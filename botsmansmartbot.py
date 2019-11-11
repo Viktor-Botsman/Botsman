@@ -27,7 +27,7 @@ def send_echo(message):
     elif "Прогноз погод" in command or "прогноз погод" in command:
         fc = owm.three_hours_forecast( 'Kyiv' )
         f = fc.get_forecast()
-        answer="/n"
+        answer=/n
         t1min=t2min=t3min=t4min=t5min=t6min=+100
         t1max=t2max=t3max=t4max=t5max=t6max=-100
         day1=day2=day3=day4=day5=day6=0
@@ -66,12 +66,12 @@ def send_echo(message):
                 t6min=min(t6min,weather.get_temperature('celsius')["temp_min"])
                 t6max=max(t6max,weather.get_temperature('celsius')["temp_max"])
  
-            answer += (str(day1) + " , " + str(mnt1) + " : " + str(t1min) + " °C - " + str(t1max) + " °C;")
-            #answer += (str(day2) + " , " + str(mnt2) + " : " + str(t2min) + " °C - " + str(t2max) + " °C;")
-            #answer += (str(day3) + " , " + str(mnt3) + " : " + str(t3min) + " °C - " + str(t3max) + " °C;")
-            #answer += (str(day4) + " , " + str(mnt4) + " : " + str(t4min) + " °C - " + str(t4max) + " °C;")
-            #answer += (str(day5) + " , " + str(mnt5) + " : " + str(t5min) + " °C - " + str(t5max) + " °C;")
-            #answer += (str(day6) + " , " + str(mnt6) + " : " + str(t6min) + " °C - " + str(t6max) + " °C;")
+        answer += (str(day1) + " , " + str(mnt1) + " : " + str(t1min) + " °C - " + str(t1max) + " °C;")
+        answer += (str(day2) + " , " + str(mnt2) + " : " + str(t2min) + " °C - " + str(t2max) + " °C;")
+        answer += (str(day3) + " , " + str(mnt3) + " : " + str(t3min) + " °C - " + str(t3max) + " °C;")
+        answer += (str(day4) + " , " + str(mnt4) + " : " + str(t4min) + " °C - " + str(t4max) + " °C;")
+        answer += (str(day5) + " , " + str(mnt5) + " : " + str(t5min) + " °C - " + str(t5max) + " °C;")
+        answer += (str(day6) + " , " + str(mnt6) + " : " + str(t6min) + " °C - " + str(t6max) + " °C;")
         #answer = f
 
         bot.send_message(message.chat.id, answer)

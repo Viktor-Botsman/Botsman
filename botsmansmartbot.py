@@ -92,9 +92,7 @@ def send_echo(message):
         #bot.send_message(message.chat.id, answer, Markdown)
         
         
-        bot.send_message(chat_id=message.chat.id, 
-                 text="*bold* _italic_ `fixed width font` [link](http://google.com).", 
-                 parse_mode=bot.ParseMode.MARKDOWN)
+        bot.send_message(message.chat.id,"*bold* _italic_ `fixed width font` [link](http://google.com).", Markdown)
         
         bot.send_chat_action(message.chat.id, 'typing')
         

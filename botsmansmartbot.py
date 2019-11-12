@@ -73,37 +73,16 @@ def send_echo(message):
         answer += (str(day5) + " , " + str(mnt5) + " : " + str(t5min) + " °C - " + str(t5max) + " °C;" + "\n")
         if day6!=0:
             answer += (str(day6) + " , " + str(mnt6) + " : " + str(t6min) + " °C - " + str(t6max) + " °C;" + "\n")
-        #answer = f
 
         bot.send_message(message.chat.id, answer)
+        message="sx"
+		bot.sendMessage(chat_id=chat_id, 
+					            text=message,
+					            parse_mode=ParseMode.MARKDOWN,
+					            disable_web_page_preview=True)
         
+
         
-        
-        #ansver = (
-        #*bold text*
-        #_italic text_
-        #[inline URL](http://www.example.com/)
-        #[inline mention of a user](tg://user?id=123456789)
-        #`inline fixed-width code`
-        #```block_language
-        #pre-formatted fixed-width code block
-        #```)
-        
-        #bot.send_message(message.chat.id, answer, Markdown)
-        bot.sendMessage(
-                chat_id=update.message.chat_id,
-                text="Done. I've subscribed you to events from *" + text +"*. \nNow go in your repository Settings > Webhooks > Add webhook.\nType `YOUR_WEBHOOK_URL` as *Payload URL* and select `application/json` as *Content type*.\nSelect the events you want to be notified of and press *Add webhook*.",
-                parse_mode=ParseMode.MARKDOWN)
-        
-        bot.send_message(message.chat.id,"*bold* _italic_ `fixed width font` [link](http://google.com).", parse_mode=ParseMode.MARKDOWN)
-        
-        bot.send_chat_action(message.chat.id, 'typing')
-        
-        #f2 = owm.daily_forecast( 'Kyiv' )
-        #lst = f2.get_forecast()
-        #answer = lst
-        
-        #bot.send_message(message.chat.id, answer)
         
     elif message.text=='курс валют':
         bot.send_message(message.chat.id, 'А тебе то зачем? нищеброд))')
@@ -112,17 +91,3 @@ def send_echo(message):
         bot.send_message(message.chat.id, message.text)
 
 bot.polling( none_stop = True )
-
-#owm=pyowm.OWM('55654dc1b5773bafd24ba70ab0b40ee4', language="ru")
-
-#place = input("В каком городе?: ")
-
-#observation = owm.weather_at_place(place)
-#w=observation.get_weather()
-#temp = w.get_temperature('celsius')["temp"]
-
-#print(temp)
-#print ("В городе " + place + " сейчас "+ w.get_detailed_status())
-#print("Температура около "+ str(temp))
-
-

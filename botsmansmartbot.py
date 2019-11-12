@@ -79,17 +79,22 @@ def send_echo(message):
         
         
         
-        ansver = (
-        *bold text*
-        _italic text_
-        [inline URL](http://www.example.com/)
-        [inline mention of a user](tg://user?id=123456789)
-        `inline fixed-width code`
-        ```block_language
-        pre-formatted fixed-width code block
-        ```)
+        #ansver = (
+        #*bold text*
+        #_italic text_
+        #[inline URL](http://www.example.com/)
+        #[inline mention of a user](tg://user?id=123456789)
+        #`inline fixed-width code`
+        #```block_language
+        #pre-formatted fixed-width code block
+        #```)
         
-        bot.send_message(message.chat.id, answer, Markdown)
+        #bot.send_message(message.chat.id, answer, Markdown)
+        
+        
+        bot.send_message(message.chat.id, 
+                 text="*bold* _italic_ `fixed width font` [link](http://google.com).", 
+                 parse_mode=telegram.ParseMode.MARKDOWN)
         
         bot.send_chat_action(message.chat.id, 'typing')
         

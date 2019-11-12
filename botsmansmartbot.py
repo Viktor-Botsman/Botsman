@@ -74,10 +74,11 @@ def send_echo(message):
         if day6!=0:
             answer += (str(day6) + " , " + str(mnt6) + " : " + str(t6min) + " °C - " + str(t6max) + " °C;" + "\n")
 
-        bot.send_message(message.chat.id, answer)
+	
+	bot.send_message(message.chat.id, answer)
         message="sx"
-	bot.sendMessage(chat_id=chat_id,text=message,parse_mode=ParseMode.MARKDOWN,disable_web_page_preview=True)
-        
+        bot.sendMessage(chat_id=chat_id,text=message,parse_mode=ParseMode.MARKDOWN,disable_web_page_preview=True)
+	
     elif message.text=='курс валют':
         bot.send_message(message.chat.id, 'А тебе то зачем? нищеброд))')
 

@@ -94,7 +94,7 @@ def send_echo(message):
         
         bot.send_message(chat_id=message.chat.id, 
                  text="*bold* _italic_ `fixed width font` [link](http://google.com).", 
-                 parse_mode=telegram.ParseMode.MARKDOWN)
+                 parse_mode=bot.ParseMode.MARKDOWN)
         
         bot.send_chat_action(message.chat.id, 'typing')
         

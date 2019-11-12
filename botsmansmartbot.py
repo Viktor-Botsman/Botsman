@@ -76,6 +76,21 @@ def send_echo(message):
         #answer = f
 
         bot.send_message(message.chat.id, answer)
+        
+        
+        
+        ansver = (
+        *bold text*
+        _italic text_
+        [inline URL](http://www.example.com/)
+        [inline mention of a user](tg://user?id=123456789)
+        `inline fixed-width code`
+        ```block_language
+        pre-formatted fixed-width code block
+        ```)
+        
+        bot.send_message(message.chat.id, answer, Markdown)
+        
         bot.send_chat_action(message.chat.id, 'typing')
         
         #f2 = owm.daily_forecast( 'Kyiv' )

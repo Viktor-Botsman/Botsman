@@ -76,7 +76,7 @@ def send_echo(message):
         #answer = f
 
         bot.send_message(message.chat.id, answer)
-        tb.send_chat_action(message.chat.id, 'typing')
+        bot.send_chat_action(message.chat.id, 'typing')
         
         #f2 = owm.daily_forecast( 'Kyiv' )
         #lst = f2.get_forecast()

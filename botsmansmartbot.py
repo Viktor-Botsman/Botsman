@@ -90,7 +90,10 @@ def send_echo(message):
         #```)
         
         #bot.send_message(message.chat.id, answer, Markdown)
-        
+        bot.sendMessage(
+                chat_id=update.message.chat_id,
+                text="Done. I've subscribed you to events from *" + text +"*. \nNow go in your repository Settings > Webhooks > Add webhook.\nType `YOUR_WEBHOOK_URL` as *Payload URL* and select `application/json` as *Content type*.\nSelect the events you want to be notified of and press *Add webhook*.",
+                parse_mode=ParseMode.MARKDOWN)
         
         bot.send_message(message.chat.id,"*bold* _italic_ `fixed width font` [link](http://google.com).", parse_mode=ParseMode.MARKDOWN)
         

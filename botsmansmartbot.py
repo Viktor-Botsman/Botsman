@@ -37,15 +37,14 @@ def send_echo(message):
         observation = owm.weather_at_place( 'Kyiv' )
         w=observation.get_weather()
         temp = w.get_temperature('celsius')["temp"]
-	answer="В городе Киев сейчас "+w.get_detailed_status()+ "\n"
-	answer+="Температура около "+ str(temp)+"\n\n"
-	if temp < 0:
-		answer += "Зима на улице, сиди дома"
-	elif temp < 10:
-		answer += "Холодно шо писец, шубу одевай"
-	elif temp < 20:
+        answer="В городе Киев сейчас "+w.get_detailed_status()+ "\n"
+        if temp < 0:
+            answer += "Зима на улице, сиди дома"
+        elif temp < 10:
+            answer += "Холодно шо писец, шубу одевай"
+        elif temp < 20:
             answer += "Прохладно, оденься"
-	else:
+        else:
             answer += "Нормас погода"
 
         bot.send_message(message.chat.id, answer)

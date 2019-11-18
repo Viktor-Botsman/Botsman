@@ -37,9 +37,9 @@ def send_echo(message):
         observation = owm.weather_at_place( 'Kyiv' )
         w=observation.get_weather()
         temp = w.get_temperature('celsius')["temp"]
-	answer="В городе Киев сейчас "+w.get_detailed_status()+ "\n"
-	answer+="Температура около "+ str(temp)+"\n"
-	if temp < 0:
+        answer = "В городе Киев сейчас "+ w.get_detailed_status() + "\n"
+        answer += "Температура около " + str(temp) + "\n"
+        if temp < 0:
             answer += "Зима на улице, сиди дома"
         elif temp < 10:
             answer += "Холодно шо писец, шубу одевай"

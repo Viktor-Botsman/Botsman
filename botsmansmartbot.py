@@ -1,11 +1,7 @@
 import pyowm
 import telebot
-import json
 from telebot import types
-import inspect
 import requests
-import functools 
-import operator
 
 owm = pyowm.OWM('55654dc1b5773bafd24ba70ab0b40ee4', language="ru")
 bot = telebot.TeleBot("929266762:AAGMsHo5fflXm4YmCFJVdTWVNGcGtEYGgdM")
@@ -137,12 +133,6 @@ def send_echo(message):
             ```block_language
             pre-formatted fixed-width code block
             ```'''
-        #show_menu()
-        #markup = types.ReplyKeyboardMarkup(row_width=1)
-        #itembtn1 = types.KeyboardButton('Погода')
-        #itembtn2 = types.KeyboardButton('/close')
-        #itembtn3 = types.KeyboardButton('d')
-        #markup.add(itembtn1, itembtn2, itembtn3)
         bot.send_message(message.chat.id, markdown, parse_mode='Markdown')
         
     else:

@@ -1,5 +1,11 @@
 import pyowm
 import telebot
+import json
+from telebot import types
+import inspect
+import requests
+import functools 
+import operator
 
 owm = pyowm.OWM('55654dc1b5773bafd24ba70ab0b40ee4', language="ru")
 bot = telebot.TeleBot("929266762:AAGMsHo5fflXm4YmCFJVdTWVNGcGtEYGgdM")
@@ -7,6 +13,30 @@ bot = telebot.TeleBot("929266762:AAGMsHo5fflXm4YmCFJVdTWVNGcGtEYGgdM")
 @bot.message_handler(content_types=['text'])
 def send_echo(message):
     command = message.text
+
+    def show_menu():
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
+        itembtn1 = types.KeyboardButton('Погода')
+        itembtn2 = types.KeyboardButton('Прогноз погоды')
+        itembtn3 = types.KeyboardButton('Ыч')
+        itembtn4 = types.KeyboardButton('Курс валют')
+        itembtn5 = types.KeyboardButton('Скрыть')
+        itembtn6 = types.KeyboardButton('Закрыть')
+        markup.add(itembtn1, itembtn2, itembtn3, itembtn4)
+        markup.row(itembtn5, itembtn6)
+        bot.send_message(message.chat.id, "Choose one letter:", reply_markup=markup)
+        #markup()
+    def hide_menu():
+        markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
+        itembtn11 = types.KeyboardButton('Ыч')
+        itembtn12 = types.KeyboardButton('Закрыть')
+        markup.add(itembtn11, itembtn12)
+        bot.send_message(message.chat.id, "hide", reply_markup=markup)
+    def close_menu():
+        markup = types.ReplyKeyboardRemove(selective=False)
+        bot.send_message(message.chat.id, 'Ok', reply_markup=markup)
+
+    
     if "Погода" in command or "погода" in command:
         observation = owm.weather_at_place( 'Kyiv' )
         w=observation.get_weather()
@@ -66,23 +96,57 @@ def send_echo(message):
                 t6min=min(t6min,weather.get_temperature('celsius')["temp_min"])
                 t6max=max(t6max,weather.get_temperature('celsius')["temp_max"])
  
-        answer += (str(day1) + " , " + str(mnt1) + " : " + str(t1min) + " °C - " + str(t1max) + " °C;" + "\n")
-        answer += (str(day2) + " , " + str(mnt2) + " : " + str(t2min) + " °C - " + str(t2max) + " °C;" + "\n")
-        answer += (str(day3) + " , " + str(mnt3) + " : " + str(t3min) + " °C - " + str(t3max) + " °C;" + "\n")
-        answer += (str(day4) + " , " + str(mnt4) + " : " + str(t4min) + " °C - " + str(t4max) + " °C;" + "\n")
-        answer += (str(day5) + " , " + str(mnt5) + " : " + str(t5min) + " °C - " + str(t5max) + " °C;" + "\n")
+        answer += (str(day1) + " , " + str(mnt1) + " : " + str(t1min) + " °C ... " + str(t1max) + " °C;" + "\n")
+        answer += (str(day2) + " , " + str(mnt2) + " : " + str(t2min) + " °C ... " + str(t2max) + " °C;" + "\n")
+        answer += (str(day3) + " , " + str(mnt3) + " : " + str(t3min) + " °C ... " + str(t3max) + " °C;" + "\n")
+        answer += (str(day4) + " , " + str(mnt4) + " : " + str(t4min) + " °C ... " + str(t4max) + " °C;" + "\n")
+        answer += (str(day5) + " , " + str(mnt5) + " : " + str(t5min) + " °C ... " + str(t5max) + " °C;" + "\n")
         if day6!=0:
-            answer += (str(day6) + " , " + str(mnt6) + " : " + str(t6min) + " °C - " + str(t6max) + " °C;" + "\n")
+            answer += (str(day6) + " , " + str(mnt6) + " : " + str(t6min) + " °C ... " + str(t6max) + " °C;" + "\n")
 
+        bot.send_message(message.chat.id, answer)
 	
-	bot.send_message(message.chat.id, answer)
-        message="sx"
-        bot.sendMessage(chat_id=chat_id,text=message,parse_mode=ParseMode.MARKDOWN,disable_web_page_preview=True)
-	
-    elif message.text=='курс валют':
-        bot.send_message(message.chat.id, 'А тебе то зачем? нищеброд))')
+    elif message.text == 'Курс валют' or message.text == 'курс валют' or message.text == '/Курс валют' or message.text == '/курс валют':
 
+        ldata = requests.get("https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5").json()
+        answer = '`/     Покупка   Продажа`' + '\n'
+        data = [ldata[0],ldata[1],ldata[2]]
+        for kl in data:
+ 
+            strg = ((kl['ccy']+kl['buy'][:-2].rjust(10,"_")+kl['sale'][:-2].rjust(10,"_")))
+ 
+            answer += '`' + strg + '`' + '\n'
+        bot.send_message(message.chat.id, answer, parse_mode='Markdown')
+
+    elif message.text == 'Ыч':
+        show_menu()
+        
+    elif message.text == 'Скрыть':
+        #close_menu()
+        hide_menu()
+        
+    elif message.text == 'Закрыть':
+        close_menu()
+
+    elif message.text=='/zz': 
+        markdown= '''**bold text**
+            _italic text_
+            [inline URL](http://www.example.com/)
+            [inline mention of a user](tg://user?id=123456789)
+            `inline fixed-width code`
+            ```block_language
+            pre-formatted fixed-width code block
+            ```'''
+        #show_menu()
+        #markup = types.ReplyKeyboardMarkup(row_width=1)
+        #itembtn1 = types.KeyboardButton('Погода')
+        #itembtn2 = types.KeyboardButton('/close')
+        #itembtn3 = types.KeyboardButton('d')
+        #markup.add(itembtn1, itembtn2, itembtn3)
+        bot.send_message(message.chat.id, markdown, parse_mode='Markdown')
+        
     else:
-        bot.send_message(message.chat.id, message.text)
+        bot.send_message(message.chat.id, "Шо?")
+        
 
 bot.polling( none_stop = True )

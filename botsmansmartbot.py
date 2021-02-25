@@ -136,7 +136,7 @@ def send_echo(message):
         bot.send_message(message.chat.id, markdown, parse_mode='Markdown')
         
     else:
-        bot.send_message(message.chat.id, "Шо?")
+        bot.send_message(message.chat.id, "Шо??")
         
 
 bot.polling( none_stop = True )
